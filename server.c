@@ -47,7 +47,6 @@ void *send_to_user(void *args)
     int * actual_args = (int *)args;
     int new_fd = *actual_args;
     free(actual_args);
-    sleep(5);
     if (send(new_fd, "Hello, world!", 13, 0) == -1)
         perror("send");
     

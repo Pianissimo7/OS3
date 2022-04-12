@@ -1,17 +1,27 @@
-OBJS	= server.o
-SOURCE	= server.c
+OBJS1	= server.o
+OBJS2	= client.o
+SOURCE1	= server.c
+SOURCE2 = client.c
 HEADER	= 
-OUT	= server.out
-CC	 = gcc
-FLAGS	 = -g -c -Wall
-LFLAGS	 = -lpthread
+OUT1	= server.out
+OUT2	= client.out
+CC	 	= gcc
+FLAGS	= -g -c -Wall
+LFLAGS	= -lpthread
 
-all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+server: $(OBJS1)
+	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
+	
+client: $(OBJS2)
+	$(CC) -g $(OBJS2) -o $(OUT2) $(LFLAGS)
 
 server.o: server.c
 	$(CC) $(FLAGS) server.c 
 
+client.o: client.c
+	$(CC) $(FLAGS) client.c 
+
 
 clean:
-	rm -f $(OBJS) $(OUT)
+	rm -f $(OBJS1) $(OUT1)
+	rm -f $(OBJS2) $(OUT2)
